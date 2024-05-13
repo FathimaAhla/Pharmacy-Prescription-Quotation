@@ -7,24 +7,25 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Drug extends Model
+class Quotation extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'name',
-        'price',
-        'quantity',
-        'description',
-    ];
+    protected $guarded = [];
 
-    public function quotation(): HasMany
+    public function user(): BelongsTo
     {
-        return $this->hasMany(Quotation::class);
+        return $this->belongsTo(User::class);
     }
 
-    public function prescriptions(): BelongsTo
+    public function drug(): BelongsTo
+    {
+        return $this->belongsTo(Drug::class);
+    }
+
+    public function prescription(): BelongsTo
     {
         return $this->belongsTo(Prescription::class);
     }
+
 }

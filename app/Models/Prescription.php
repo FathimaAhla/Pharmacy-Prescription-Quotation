@@ -4,27 +4,27 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Drug extends Model
+class Prescription extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'name',
-        'price',
-        'quantity',
-        'description',
-    ];
+    protected $guarded = [];
+
+    public function user(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
 
     public function quotation(): HasMany
     {
         return $this->hasMany(Quotation::class);
     }
 
-    public function prescriptions(): BelongsTo
+    public function drugs(): HasMany
     {
-        return $this->belongsTo(Prescription::class);
+        return $this->hasMany(Drug::class);
     }
+
 }
