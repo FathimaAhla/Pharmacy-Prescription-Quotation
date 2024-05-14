@@ -18,7 +18,7 @@
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50">
                             <tr>
                                 <th scope="col" class="px-6 py-3">
-                                    ID
+                                    #
                                 </th>
                                 <th scope="col" class="px-6 py-3">
                                     User Name
@@ -44,11 +44,11 @@
                             @forelse ($users as $user)
                                 <tr class="bg-white border-b">
                                     <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                                        {{ $loop->iteration }}</td>
+                                        00{{ $loop->iteration }}</td>
                                     <td class="align-middle px-6 py-4">{{ $user->name }}</td>
                                     <td class="align-middle px-6 py-4">{{ $user->email }}</td>
                                     <td class="align-middle px-6 py-4">{{ $user->address }}</td>
-                                    <td class="align-middle px-6 py-4">{{ $user->contact }}</td>
+                                    <td class="align-middle px-6 py-4">{{ $user->contact_no }}</td>
                                     <td class="align-middle px-6 py-4">{{ $user->dob }}</td>
                                     <td class="align-middle px-6 py-4">
                                         <div class="btn-group" role="group" aria-label="Basic example">
