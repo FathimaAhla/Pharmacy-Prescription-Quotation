@@ -32,19 +32,29 @@ class RegisteredUserController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+            'address' => ['required', 'string', 'max:255'],
+            'contact_no' => ['required', 'string', 'size:10', 'unique:'.User::class],
+            'dob' => ['required', 'date'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
+            'address' => $request->address,
+            'contact_no' => $request->contact_no,
+            'dob' => $request->dob,
             'password' => Hash::make($request->password),
         ]);
 
         event(new Registered($user));
 
-        Auth::login($user);
+        if ($user->hasRole('admin')) {
+            Auth::login($user);
+            return redirect()->route('admin/prescriptions.index');
+        }
 
-        return redirect(route('dashboard', absolute: false));
+        Auth::login($user);
+        return redirect(route('prescription.index', absolute: false));
     }
 }
