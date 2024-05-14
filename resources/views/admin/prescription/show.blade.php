@@ -52,17 +52,30 @@
                                                     {{ $quotation->drug->name }}
                                                 </td>
                                                 <td class="align-middle px-6 py-4">
-                                                    {{ $quotation->drug->price }} * {{ $quotation->quantity }}
+                                                    {{ $quotation->drug->price }} x {{ $quotation->quantity }}
                                                 </td>
                                                 <td class="align-middle px-6 py-4">
-                                                    {{ $quotation->total_price }}
+                                                    {{ $quotation->drug->price }} * {{ $quotation->quantity }}
                                                 </td>
                                             </tr>
                                         @endforeach
+
+                                        <!-- Add this code at the top of your Blade file -->
+                                        @php
+                                            $totalPrice = 0;
+                                            foreach ($quotations as $quotation) {
+                                                // Check if the current quotation belongs to the desired prescription ID
+                                                if ($quotation->prescription_id == $prescription->id) {
+                                                    // Add the total price of the current quotation to the total price
+                                                    $totalPrice += $quotation->total_price;
+                                                }
+                                            }
+                                        @endphp
+
                                         <tr class="bg-white border-b">
-                                        <td class="align-middle px-6 py-4">Total:</td>
-                                        <td class="align-middle px-6 py-4"></td>
-                                        <td class="align-middle px-6 py-4"></td>
+                                            <td class="align-middle px-6 py-4">Total:</td>
+                                            <td class="align-middle px-6 py-4"></td>
+                                            <td class="align-middle px-6 py-4">{{$totalPrice}}</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -96,18 +109,18 @@
                                 </form>
                             </div>
                             <div class="flex items-center justify-end mt-4">
-                                <form action="{{ route('admin/confirm.store') }}" method="POST">
+                                <form action="{{ route('admin/quotation-details.store') }}" method="POST">
                                     @csrf
                                     @foreach ($quotations as $quotation)
-                                    <input type="hidden" name="user_id" value="{{ $quotation->user_id }}">
-                                    <input type="hidden" name="prescription_id"
-                                        value="{{ $quotation->prescriptions_id }}">
-                                    <input type="hidden" name="qutation_id" value="{{ $quotation->id }}">
-                                    <input type="hidden" name="total" value="{{ $quotation->total_price }}">
+                                        <input type="hidden" name="user_id" value="{{ $quotation->user_id }}">
+                                        <input type="hidden" name="prescription_id"
+                                            value="{{ $quotation->prescription_id }}">
+                                        <input type="hidden" name="qutation_id" value="{{ $quotation->id }}">
+                                        <input type="hidden" name="total" value="{{ $quotation->total_price }}">
                                     @endforeach
-                                <x-primary-button class="ms-4">
-                                    {{ __('Send Quotation') }}
-                                </x-primary-button>
+                                    <x-primary-button class="ms-4">
+                                        {{ __('Send Quotation') }}
+                                    </x-primary-button>
                                 </form>
                             </div>
                         </div>
