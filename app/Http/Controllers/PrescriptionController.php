@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\PrescriptionMail;
 use App\Models\Prescription;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class PrescriptionController extends Controller
 {
@@ -57,6 +59,8 @@ class PrescriptionController extends Controller
         $prescription->delivery_address = $request->delivery_address;
         $prescription->delivery_time = $request->delivery_time;
         $prescription->save();
+
+        Mail::to('admin@mail.com')->send(new PrescriptionMail());
 
         return redirect()->route('prescription.index')->with('success', 'Prescription created successfully.');
     }
