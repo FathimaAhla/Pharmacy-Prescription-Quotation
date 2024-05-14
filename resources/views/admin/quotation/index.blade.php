@@ -18,16 +18,13 @@
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50">
                             <tr>
                                 <th scope="col" class="px-6 py-3">
-                                    ID
+                                    #
                                 </th>
                                 <th scope="col" class="px-6 py-3">
                                     User Name
                                 </th>
                                 <th scope="col" class="px-6 py-3">
                                     Prescription ID
-                                </th>
-                                <th scope="col" class="px-6 py-3">
-                                    Quotation ID
                                 </th>
                                 <th scope="col" class="px-6 py-3">
                                     Total Price
@@ -41,10 +38,9 @@
                             @forelse ($quotations as $quotation)
                                 <tr class="bg-white border-b">
                                     <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                                        {{ $loop->iteration }}</td>
+                                        00{{ $loop->iteration }}</td>
                                     <td class="align-middle px-6 py-4">{{ $quotation->user->name }}</td>
                                     <td class="align-middle px-6 py-4">{{ $quotation->prescription_id }}</td>
-                                    <td class="align-middle px-6 py-4">{{ $quotation->quotation_id }}</td>
                                     <td class="align-middle px-6 py-4">{{ $quotation->total }}</td>
                                     <td class="align-middle px-6 py-4">
                                         <div class="btn-group" role="group" aria-label="Basic example">

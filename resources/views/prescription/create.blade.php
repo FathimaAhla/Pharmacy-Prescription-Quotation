@@ -4,10 +4,6 @@
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                 {{ __('Create Prescription') }}
             </h2>
-            <a class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150"
-                href="{{ route('prescription.index') }}">
-                {{ __('Prescription List') }}
-            </a>
         </div>
     </x-slot>
 
@@ -15,7 +11,14 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-                    <h1 class="mb-0 font-semibold text-xl text-gray-800 leading-tight">Add Prescription</h1>
+                    <div class="d-flex align-items-center flex justify-between mb-4">
+                        <h1 class="mb-0 font-semibold text-xl text-gray-800 leading-tight">Add a new Prescription</h1>
+
+                        <a class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150"
+                            href="{{ route('prescription.index') }}">
+                            Prescription List
+                        </a>
+                    </div>
                     <hr />
 
                     <form action="{{ route('prescription.store') }}" method="POST" enctype="multipart/form-data">
@@ -53,7 +56,7 @@
                             <div class="col">
                                 <x-input-label for="delivery_time" :value="__('Delivery Time')" />
 
-                                <x-text-input id="delivery_time" class="block mt-1 w-full" type="text"
+                                <x-text-input id="delivery_time" class="block mt-1 w-full" type="time"
                                     name="delivery_time" :value="old('delivery_time')" required autofocus
                                     autocomplete="delivery_time" />
 

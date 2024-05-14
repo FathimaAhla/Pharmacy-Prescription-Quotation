@@ -45,7 +45,7 @@
                             @forelse ($prescriptions as $prescription)
                                 <tr class="bg-white border-b">
                                     <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                                        {{ $loop->iteration }}</td>
+                                        00{{ $loop->iteration }}</td>
                                     <td class="align-middle px-6 py-4 border-t-0 border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left text-blueGray-700 flex gap-2">
                                         @foreach (json_decode($prescription->images) as $image)
                                             <img src="/images/{{ $image }}" alt="image" class="w-20 h-20">

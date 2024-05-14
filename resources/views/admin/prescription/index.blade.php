@@ -24,9 +24,6 @@
                                     Delivery Address
                                 </th>
                                 <th scope="col" class="px-6 py-3">
-                                    Delivery Date
-                                </th>
-                                <th scope="col" class="px-6 py-3">
                                     Delivery Time
                                 </th>
                                 <th scope="col" class="px-6 py-3">
@@ -41,10 +38,9 @@
                             @forelse ($prescriptions as $prescription)
                                 <tr class="bg-white border-b">
                                     <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                                        {{ $loop->iteration }}</td>
-                                    <td class="align-middle px-6 py-4">{{ $prescription->user_id }}</td>
+                                        00{{ $loop->iteration }}</td>
+                                    <td class="align-middle px-6 py-4">{{ $prescription->user->name }}</td>
                                     <td class="align-middle px-6 py-4">{{ $prescription->delivery_address }}</td>
-                                    <td class="align-middle px-6 py-4">{{ $prescription->delivery_date }}</td>
                                     <td class="align-middle px-6 py-4">{{ $prescription->delivery_time }}</td>
                                     <td class="align-middle px-6 py-4">
                                         <span type="button"

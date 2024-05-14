@@ -8,7 +8,16 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-                    <div class="flex flex-wrap justify-around mt-24 gap-4">
+                    <div class="d-flex align-items-center flex justify-between mb-4">
+                        <h1 class="mb-0 font-semibold text-xl text-gray-800 leading-tight">Prescription Detail</h1>
+
+                        <a class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150"
+                            href="{{ route('admin/prescriptions.index') }}">
+                            Prescription List
+                        </a>
+                    </div>
+                    <hr />
+                    <div class="flex flex-wrap justify-around mt-4 gap-4">
                         <div class="w-1/2 min-w-[300px] mb-12">
                             @foreach (json_decode($prescription->images) as $key => $image)
                                 @if ($key == 0)
