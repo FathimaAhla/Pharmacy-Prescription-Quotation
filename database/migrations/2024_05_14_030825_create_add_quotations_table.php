@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('quotations', function (Blueprint $table) {
+        Schema::create('add_quotations', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('user_id')->constrained();
             $table->foreignId('prescription_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('drug_id')->constrained();
-            $table->string('quantity');
-            $table->string('total_price');
+            $table->foreignId('quotation_id')->constrained()->cascadeOnDelete();
+            $table->enum('status', ['accept', 'reject'])->nullable();
+            $table->string('total');
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('quotations');
+        Schema::dropIfExists('add_quotations');
     }
 };
