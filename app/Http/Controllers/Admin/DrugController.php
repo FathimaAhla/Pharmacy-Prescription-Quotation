@@ -77,9 +77,6 @@ class DrugController extends Controller
         if ($data) {
             session()->flash('success', 'Product Update Successfully');
             return redirect(route('admin/drugs.index'));
-        } else {
-            session()->flash('error', 'Some problem occure');
-            return redirect(route('admin/drug.edit'));
         }
     }
 
