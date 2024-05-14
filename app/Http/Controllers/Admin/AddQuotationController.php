@@ -55,7 +55,7 @@ class AddQuotationController extends Controller
             Mail::to('admin@mail.com')->send(new QuotationMail());
             // Mail::to($confirmation->user->email)->send(new QuotationMail($confirmation));
 
-            return redirect(route('admin/quotations.index'))->with('success', 'Quotation sent successfully.');
+            return redirect(route('admin/prescriptions.index'))->with('success', 'Quotation sent successfully.');
         }
 
         return redirect()->back()->with('error', 'Failed to create confirmation.');
