@@ -26,10 +26,10 @@
 
                         <!-- Image -->
 
-                        <div class="row mb-3">
+                        <div class="row my-3">
                             <div class="col">
                                 <x-input-label for="images" :value="__('Prescription')" />
-                                <x-text-input id="images" class="block mt-1 w-full" type="file" name="images[]"
+                                <x-text-input id="images" class="border-gray-300 focus:border-gray-10 focus:ring-gray-10 rounded-md shadow-sm block mt-1 w-full" type="file" name="images[]"
                                     :value="old('images')" required autofocus autocomplete="" multiple />
                                 <x-input-error :messages="$errors->get('images')" class="mt-2" />
                             </div>
@@ -66,7 +66,7 @@
                         <div class="row mb-3">
                             <div class="col">
                                 <x-input-label for="note" :value="__('Note')" />
-                                <x-text-input id="note" class="block mt-1 w-full" type="text" name="note"
+                                <x-text-area id="note" class="block mt-1 w-full" name="note"
                                     :value="old('note')" required autofocus autocomplete="note" />
                                 <x-input-error :messages="$errors->get('note')" class="mt-2" />
                             </div>

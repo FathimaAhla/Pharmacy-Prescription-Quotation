@@ -49,7 +49,7 @@
                         <div class="row mb-3">
                             <div class="col">
                                 <x-input-label for="description" :value="__('Description')" />
-                                <x-text-input id="description" class="block mt-1 w-full" type="text"
+                                <x-text-area id="description" class="block mt-1 w-full"
                                     name="description" :value="old('description', $drug->description)" required autofocus
                                     autocomplete="description" />
                                 <x-input-error :messages="$errors->get('description')" class="mt-2" />
