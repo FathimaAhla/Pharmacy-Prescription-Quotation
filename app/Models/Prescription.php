@@ -27,4 +27,9 @@ class Prescription extends Model
         return $this->hasMany(Drug::class);
     }
 
+    public function addQuotation(): HasMany
+    {
+        return $this->hasMany(AddQuotation::class);
+    }
+
 }

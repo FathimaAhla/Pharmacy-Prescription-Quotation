@@ -59,4 +59,9 @@ class User extends Authenticatable
         return $this->hasMany(Prescription::class);
     }
 
+    public function addQuotations(): HasMany
+    {
+        return $this->hasMany(AddQuotation::class);
+    }
+
 }

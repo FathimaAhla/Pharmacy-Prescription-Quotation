@@ -28,4 +28,9 @@ class Quotation extends Model
         return $this->belongsTo(Prescription::class);
     }
 
+    public function addQuotation(): HasMany
+    {
+        return $this->hasMany(AddQuotation::class);
+    }
+
 }
